@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BotApplication {
 
 	public static void main(String[] args) {
+		
+		
+		System.err.println("htk");
+		
 		SpringApplication.run(BotApplication.class, args);
 	}
 

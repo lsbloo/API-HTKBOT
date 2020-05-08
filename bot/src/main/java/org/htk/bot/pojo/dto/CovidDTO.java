@@ -103,6 +103,7 @@ public class CovidDTO {
 		
 		
 	}
+	
 	public Covid createCovid() {
 		return new Covid();
 	}

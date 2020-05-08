@@ -1,12 +1,16 @@
 package org.htk.bot.models;
 
 import java.util.Collection;
+import java.util.List;
 
+import org.htk.bot.models.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,6 +18,9 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 
 @Entity
 @Table(name="userhtk")
@@ -135,5 +142,23 @@ public class UserHtk implements UserDetails{
 	}
 	
 	public UserHtk() {}
+
+
+
+	@ManyToMany
+	@JoinTable(name="user_role",joinColumns= @JoinColumn(
+			name="userhtk_id", referencedColumnName="id"),
+	inverseJoinColumns = @JoinColumn(name="role_id" , referencedColumnName = "id"))
+	private Collection<Role> roles;
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
 
 }

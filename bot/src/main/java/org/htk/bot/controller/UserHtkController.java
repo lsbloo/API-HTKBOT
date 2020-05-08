@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(value="Users")
 @RequestMapping("api/v1")
 public class UserHtkController {
 	
@@ -23,6 +27,7 @@ public class UserHtkController {
 	private UserService userService;
 	
 	
+	@ApiOperation(value="cria um usuário")
 	@PostMapping(value="/create",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<?> createUser(@RequestBody UserDTO user){
 		
